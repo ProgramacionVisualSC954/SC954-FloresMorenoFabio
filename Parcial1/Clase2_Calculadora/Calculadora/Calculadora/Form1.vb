@@ -36,9 +36,6 @@ Public Class Form1
         mostrar.Text = mensaje
     End Sub
 
-    ' ═══════════════════════════════════════════════════════════════
-    '  LÓGICA CENTRAL
-    ' ═══════════════════════════════════════════════════════════════
 
   
     Private Sub AgregarTexto(valor As String)
@@ -80,26 +77,26 @@ Public Class Form1
 
     Private Sub CalcularResultado()
 
-        ' ── 1. Campo vacío ──────────────────────────────────────────
+      
         If operacion.Trim() = "" Then
             MostrarError("El campo no puede estar vacío")
             Digitalizar.Focus()
             Return
         End If
 
-        ' ── 2. Paréntesis no balanceados ────────────────────────────
+      
         If Not ParentesisBalanceados(operacion) Then
             MostrarError("La expresión contiene paréntesis no balanceados")
             Return
         End If
 
-        ' ── 3. División entre cero ──────────────────────────────────
+        
         If ContieneDivisionEntreCero(operacion) Then
             MostrarError("No se puede dividir entre cero")
             Return
         End If
 
-        ' ── 4. Evaluación con DataTable.Compute ─────────────────────
+       
         Try
             Dim dt As New DataTable()
             Dim resultadoObj As Object = dt.Compute(operacion, Nothing)
